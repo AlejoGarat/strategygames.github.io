@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <script src="./js/index.js"></script>
+  <script src="./js/ttc.js"></script>
+  <title>Connected four</title>
+</head>
+
+<body>
+  <div id="home">
+    <h1>Tic tac toe + Connect 4 Games</h1>
+    <h2>¿Qué quieres jugar?</h2>
+    <div id="menuOptions">
+      <button class="btn" onclick="makeVisible('connectFourOptions')">
+        Connect 4
+      </button>
+      <button class="btn" onclick="makeVisible('ticTacToeOptions')">
+        Tic tac toe
+      </button>
+    </div>
+  </div>
+
+  <div id="connectFourOptions">
+    <button class="btn" onclick="makeVisible('game')">1 vs 1</button>
+    <button class="btn" onclick="makeVisible('gameAI')">vs AI</button>
+  </div>
+
+  <div id="ticTacToeOptions">
+    <button class="btn" onclick="makeVisible('ticTacToe1v1')">1 vs 1</button>
+    <button class="btn" onclick="makeVisible('ticTacToeAI')">vs AI</button>
+  </div>
+
+  <div id="game">
+    <div class="gameOptions">
+      <button class="btn" onclick="startGame()">Comenzar</button>
+      <button class="btn" onclick="restartGame()">Resetear</button>
+      <p id="turn"></p>
+    </div>
+
+    <div class="gameBoard">
+      <table>
+        <thead>
+          <tr>
+            <td><button onclick="dropToken(0)">Drop</button></td>
+            <td><button onclick="dropToken(1)">Drop</button></td>
+            <td><button onclick="dropToken(2)">Drop</button></td>
+            <td><button onclick="dropToken(3)">Drop</button></td>
+            <td><button onclick="dropToken(4)">Drop</button></td>
+            <td><button onclick="dropToken(5)">Drop</button></td>
+            <td><button onclick="dropToken(6)">Drop</button></td>
+          </tr>
+        </thead>
+        <script>
+          loadBoard();
+        </script>
+      </table>
+    </div>
+  </div>
+
+  <div id="gameAI">
+    <div class="gameOptions">
+      <button class="btn" onclick="startGameAI()">Comenzar</button>
+      <button class="btn" onclick="restartGame()">Resetear</button>
+      <p id="turnAI"></p>
+    </div>
+
+    <div class="gameBoard">
+      <table>
+        <thead>
+          <tr>
+            <td><button onclick="dropTokenAI(0)">Drop</button></td>
+            <td><button onclick="dropTokenAI(1)">Drop</button></td>
+            <td><button onclick="dropTokenAI(2)">Drop</button></td>
+            <td><button onclick="dropTokenAI(3)">Drop</button></td>
+            <td><button onclick="dropTokenAI(4)">Drop</button></td>
+            <td><button onclick="dropTokenAI(5)">Drop</button></td>
+            <td><button onclick="dropTokenAI(6)">Drop</button></td>
+          </tr>
+        </thead>
+        <script>
+          loadBoardAI();
+        </script>
+      </table>
+    </div>
+  </div>
+
+  <div id="ticTacToe1v1">
+
+    <div class="gameOptions">
+      <button class="btn" onclick="startGameTTC()">Comenzar</button>
+      <button class="btn" onclick="restartGameTTC()">Resetear</button>
+      <p id="turnTTC"></p>
+    </div>
+
+
+    <table id="tic-tac-toe">
+      <tbody>
+        <tr>
+          <td>
+            <button id="p00" onclick="play(0,0)"></button>
+          </td>
+          <td>
+            <button id="p01" onclick="play(0,1)"></button>
+          </td>
+          <td>
+            <button id="p02" onclick="play(0,2)"></button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button id="p10" onclick="play(1,0)"></button>
+          </td>
+          <td>
+            <button id="p11" onclick="play(1,1)"></button>
+          </td>
+          <td>
+            <button id="p12" onclick="play(1,2)"></button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button id="p20" onclick="play(2,0)"></button>
+          </td>
+          <td>
+            <button id="p21" onclick="play(2,1)"></button>
+          </td>
+          <td>
+            <button id="p22" onclick="play(2,2)"></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="ticTacToeAI">
+
+    <label for="difficulty">Selecciona una dificultad:</label>
+
+    <select id="dif">
+      <option value="easy">Fácil</option>
+      <option value="medium">Intermedio</option>
+      <option value="difficult">Difícil</option>
+    </select>
+
+    <br>
+
+    <div class="gameOptions">
+      <button class="btn" onclick="startGameTTCAI()">Comenzar</button>
+      <button class="btn" onclick="restartGameTTC()">Resetear</button>
+      <p id="turnTTCAI"></p>
+    </div>
+
+
+    <table id="tic-tac-toe">
+      <tbody>
+        <tr>
+          <td>
+            <button id="pS00" onclick="playAI(0,0)"></button>
+          </td>
+          <td>
+            <button id="pS01" onclick="playAI(0,1)"></button>
+          </td>
+          <td>
+            <button id="pS02" onclick="playAI(0,2)"></button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button id="pS10" onclick="playAI(1,0)"></button>
+          </td>
+          <td>
+            <button id="pS11" onclick="playAI(1,1)"></button>
+          </td>
+          <td>
+            <button id="pS12" onclick="playAI(1,2)"></button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button id="pS20" onclick="playAI(2,0)"></button>
+          </td>
+          <td>
+            <button id="pS21" onclick="playAI(2,1)"></button>
+          </td>
+          <td>
+            <button id="pS22" onclick="playAI(2,2)"></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+
+</html>

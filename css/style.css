@@ -1,0 +1,255 @@
+* {
+    box-sizing: border-box;
+  }
+  
+body {
+    background-image: url("http://www.arielcelaya.com.ar/multimedia/wp-content/uploads/2015/10/FondoLejos.png");
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-attachment: fixed;
+    
+}
+
+@media only screen and (max-width: 767px) {
+    body {
+      /* The file size of this background image is 93% smaller
+         to improve page load speed on mobile internet connections */
+      background-image: url("http://www.arielcelaya.com.ar/multimedia/wp-content/uploads/2015/10/FondoLejos.png");
+    }
+  }
+
+
+  
+  @media screen and (min-width: 1025px) {
+    /* start of desktop pc */
+    .gameBoard {
+        position: absolute;
+        left: 20%;
+        top: 4rem;
+        transform:translate(-50%);
+        width: 640px;
+        height: 600px;
+        border-collapse: collapse;
+        margin-top: 70px;
+        background-color: rgb(61, 138, 254);
+        border: 1px solid black;
+        box-shadow: 4px 4px black;
+    } 
+
+    .boardPos {
+        width: 80px;
+        height: 80px;
+        background: white;
+        border: 1px solid black;
+        border-radius: 50%;
+    }
+
+    }
+
+  @media screen and (max-width: 1024px) {
+    /* start of large tablet styles */
+    .gameBoard {
+        position: absolute;
+        left: 40%;
+        top: 4rem;
+        transform:translate(-50%);
+        width: 640px;
+        height: 600px;
+        border-collapse: collapse;
+        margin-top: 70px;
+        background-color: rgb(61, 138, 254);
+        border: 1px solid black;
+        box-shadow: 4px 4px black;
+    } 
+
+    .boardPos {
+        width: 80px;
+        height: 80px;
+        background: white;
+        border: 1px solid black;
+        border-radius: 50%;
+    }
+    }
+    
+    @media screen and (max-width: 814px) {
+    /* start of medium tablet styles */
+    .gameBoard {
+        position: absolute;
+        left: 50%;
+        top: 4rem;
+        transform:translate(-50%);
+        width: 370px;
+        height: 530px;
+        border-collapse: collapse;
+        margin-top: 70px;
+        background-color: rgb(61, 138, 254);
+        border: 1px solid black;
+        box-shadow: 4px 4px black;
+    }
+
+    .boardPos {
+        width: 80px;
+        height: 80px;
+        background: white;
+        border: 1px solid black;
+        border-radius: 50%;
+    }
+    }
+    
+    @media screen and (max-width: 640px) {
+    /* start of phone styles */
+    .gameBoard {
+        position: absolute;
+        left: 50%;
+        top: 4rem;
+        transform:translate(-50%);
+        width: 370px;
+        height: 530px;
+        border-collapse: collapse;
+        margin-top: 70px;
+        background-color: rgb(61, 138, 254);
+        border: 1px solid black;
+        box-shadow: 4px 4px black;
+    }
+
+    .boardPos {
+        width: 80px;
+        height: 80px;
+        background: white;
+        border: 1px solid black;
+        border-radius: 50%;
+    }
+
+    }
+#connectFourOptions {
+    display: none;
+}
+
+#ticTacToeOptions {
+    display: none;
+}
+
+#ticTacToe1v1 {
+    display: none;
+}
+
+#ticTacToeAI {
+    display: none;
+}
+
+#ticTacToeMenuAI {
+    display: none;
+}
+
+#tic-tac-toe
+{
+	border-collapse: collapse;
+}
+
+#tic-tac-toe td
+{
+	width: 20vmin;
+	height: 20vmin;
+	padding: 0;
+	border: 1px solid black;
+	color: transparent;
+}
+
+#tic-tac-toe button
+{
+	display: block;
+	border: none;	
+	width: 100%;
+	height: 100%;
+	background: transparent;
+	color: transparent;
+	cursor: pointer;
+}
+
+#tic-tac-toe button::-moz-focus-inner
+{
+	border: none;
+}
+
+#tic-tac-toe button:focus
+{
+	background: silver;
+}
+
+h1, h2 {
+    text-align: center;
+    font-family: 'Luckiest Guy', cursive;
+    font-size: x-large;
+}
+
+#menuOptions button {
+    display: block;
+    margin: 0;
+    margin-top: 10px;
+  top: 50%;
+  left: 50%;
+}
+
+#game {
+    display: none;
+}
+
+#gameAI {
+    display: none;
+}
+
+
+#turn {
+    margin-left: 640px;
+    font-size: large;
+}
+
+#turnAI {
+    margin-left: 640px;
+    font-size: large;
+}
+
+.btn {
+    padding: 1em 2.1em 1.1em;
+    border-radius: 3px;
+    margin: 8px 8px 8px 8px;
+    color: #fbdedb;
+    background-color: #fbdedb;
+    display: inline-block;
+    background: green;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    font-family: sans-serif;
+    font-weight: 800;
+    font-size: .85em;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    -webkit-box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
+    position: relative;
+}
+.btn:hover, .btn:focus {
+    opacity: 0.8;
+}
+.btn:active {
+    -webkit-transform: scale(0.80);
+    -moz-transform: scale(0.80);
+    -ms-transform: scale(0.80);
+    -o-transform: scale(0.80);
+    transform: scale(0.80);
+}
+.btn.block {
+    display: block !important;
+}
+.btn.circular {
+  border-radius: 50em !important;
+}
+
+.gameOptions {
+      margin-top: 10px;
+
+}
