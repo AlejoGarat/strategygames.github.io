@@ -643,6 +643,10 @@ function checkWinner() {
     return 0;
 }
 
+let boardP1 = [['', '', ''],
+['', '', ''],
+['', '', '']];
+
 function bestMoveTicTacToe() {
 
     let difficulty = getDifficulty();
@@ -651,34 +655,101 @@ function bestMoveTicTacToe() {
         for (let row = 0; row < dim; row++) {
             for (let col = 0; col < dim; col++) {
                 //See the next position available
-                if (boardTTC[row][col] === none) {
+                if (row == 0 && col == 2 && boardTTC[row][col] == none) {
+                    bestChoice.row = 0;
+                    bestChoice.col = 2;
+                    break;
+                } else if (boardTTC[row][col] === p1 && inBounds(row + 1, col) && boardTTC[row + 1][col] === none) {
+                    bestChoice.row = row + 1;
+                    bestChoice.col = col;
+                    break;
+                } else if (row == 0 && col == 0 && boardTTC[row][col] == none) {
+                    bestChoice.row = 0;
+                    bestChoice.col = 0;
+                    break;
+                } else if (boardTTC[row][col] === p1 && inBounds(row, col + 1) && boardTTC[row][col + 1] === none) {
                     bestChoice.row = row;
+                    bestChoice.col = col + 1;
+                    break;
+                } else if (row == 2 && col == 0 && boardTTC[row][col] == none) {
+                    bestChoice.row = 2;
+                    bestChoice.col = 0;
+                    break;
+                } else if (boardTTC[row][col] === p1 && inBounds(row, col - 1) && boardTTC[row][col - 1] === none) {
+                    bestChoice.row = row;
+                    bestChoice.col = col - 1;
+                    break;
+                } else if (row == 2 && col == 2 && boardTTC[row][col] == none) {
+                    bestChoice.row = 2;
+                    bestChoice.col = 2;
+                    break;
+
+                } else if (boardTTC[row][col] === p1 && inBounds(row - 1, col) && boardTTC[row - 1][col] === none) {
+                    bestChoice.row = row - 1;
                     bestChoice.col = col;
                     break;
                 }
             }
         }
     } else if (difficulty == 2) {
-        for (let row = 0; row < dim; row++) {
-            for (let col = 0; col < dim; col++) {
-                //See the next position available
-                if (boardTTC[row][col] === p1) {
-                    if (inBounds(row + 1, col) && boardTTC[row + 1][col] === none) {
-                        bestChoice.row = row + 1;
-                        bestChoice.col = col;
+
+        for (let i = 0; i < dim; i++) {
+            for (let e = 0; e < dim; e++) {
+                if (boardTTC[i][e] == p1) {
+                    if (inBounds(i, e + 1) && boardTTC[i][e + 1] == p1 && inBounds(i, e + 2) && boardTTC[i][e + 2] == none) {
+                        bestChoice.row = i;
+                        bestChoice.col = e + 2;
                         break;
-                    } else if (inBounds(row, col + 1) && boardTTC[row][col + 1] === none) {
-                        bestChoice.row = row;
-                        bestChoice.col = col + 1;
+                    } else if (inBounds(i, e - 1) && boardTTC[i][e - 1] == p1 && inBounds(i, e - 2) && boardTTC[i][e - 2] == none) {
+                        bestChoice.row = i;
+                        bestChoice.col = e - 2;
                         break;
-                    } else if (inBounds(row, col - 1) && boardTTC[row][col - 1] === none) {
-                        bestChoice.row = row;
-                        bestChoice.col = col - 1;
+                    } else if (inBounds(i + 1, e) && boardTTC[i + 1][e] == p1 && inBounds(i + 2, e) && boardTTC[i + 2][e] == none) {
+                        bestChoice.row = i + 2;
+                        bestChoice.col = e;
                         break;
-                    } else if (inBounds(row - 1, col) && boardTTC[row - 1][col] === none)
-                        bestChoice.row = row - 1;
-                    bestChoice.col = col;
-                    break;
+                    } else if (inBounds(i - 1, e) && boardTTC[i - 1][e] == p1 && inBounds(i - 2, e) && boardTTC[i - 2][e] == none) {
+                        bestChoice.row = i - 2;
+                        bestChoice.col = e;
+                        break;
+                    } else if (inBounds(i + 1, e + 1) && boardTTC[i + 1][e + 1] == p1 && inBounds(i + 2, e + 2) && boardTTC[i + 2][e + 2] == none) {
+                        bestChoice.row = i + 2;
+                        bestChoice.col = e + 2;
+                        break;
+                    }
+                    else if (inBounds(i - 1, e - 1) && boardTTC[i - 1][e - 1] == p1 && inBounds(i - 2, e - 2) && boardTTC[i - 2][e - 2] == none) {
+                        bestChoice.row = i - 2;
+                        bestChoice.col = e - 2;
+                        break;
+                    }
+                    else if (inBounds(i + 1, e - 1) && boardTTC[i + 1][e - 1] == p1 && inBounds(i + 2, e - 2) && boardTTC[i + 2][e - 2] == none) {
+                        bestChoice.row = i + 2;
+                        bestChoice.col = e - 2;
+                        break;
+                    }
+                    else if (inBounds(i - 1, e + 1) && boardTTC[i - 1][e + 1] == p1 && inBounds(i - 2, e + 2) && boardTTC[i - 2][e + 2] == none) {
+                        bestChoice.row = i - 2;
+                        bestChoice.col = e + 2;
+                        break;
+                    }
+                } else {
+                    if (inBounds(i - 1, e) && boardTTC[i - 1][e] === none) {
+                        bestChoice.row = i - 1;
+                        bestChoice.col = e;
+                        break;
+                    } else if (inBounds(i, e + 1) && boardTTC[i][e + 1] === none) {
+                        bestChoice.row = i;
+                        bestChoice.col = e + 1;
+                        break;
+                    } else if (inBounds(i, e - 1) && boardTTC[i][e - 1] === none) {
+                        bestChoice.row = i;
+                        bestChoice.col = e - 1;
+                        break;
+                    } else if (inBounds(i + 1, e) && boardTTC[i + 1][e] === none) {
+                        bestChoice.row = i + 1;
+                        bestChoice.col = e;
+                        break;
+                    }
                 }
             }
         }
@@ -763,7 +834,7 @@ function playAI(numRow, numCol) {
                 turn = ai;
                 bestMoveTicTacToe();
                 if (playerWon(bestChoice.row, bestChoice.col, ai)) {
-                    alert( "La AI te ha ganado!");
+                    alert("La AI te ha ganado!");
                     gameOver = true;
                     return;
                 } else {
